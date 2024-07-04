@@ -8,20 +8,22 @@ spec:
   goTemplateOptions: ["missingkey=error"]
   generators:
   - git:
-      repoURL: https://github.com/kostis-codefresh/many-appsets-demo.git
+      repoURL: https://github.com/dudick123/many-appsets-demo.git
       revision: HEAD
       directories:
       - path: apps/*/envs/staging    
   template:      
     metadata:
-      name: '{{index .path.segments 1}}-{{index .path.segments 3}}' 
+      name: '{{index .path.segments 1}}-{{index .path.segments 3}}'
+      labels:
+        env: '{{index .path.segments 3}}' 
     spec:
       # The project the application belongs to.
       project: default
 
       # Source of the application manifests
       source:
-        repoURL: https://github.com/kostis-codefresh/many-appsets-demo.git
+        repoURL: https://github.com/dudick123/many-appsets-demo.git
         targetRevision: HEAD
         path: '{{.path.path}}'
       
